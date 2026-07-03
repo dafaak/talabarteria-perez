@@ -1,0 +1,11 @@
+---
+interface Props {
+    background?: string;
+}
+
+const { background = "" } = Astro.props;
+---
+
+<section class={`py-20 lg:py-32 ${background}`}>
+    <slot />
+</section>
