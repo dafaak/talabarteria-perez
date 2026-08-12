@@ -1,0 +1,39 @@
+---
+interface Props {
+  gap?: "sm" | "md" | "lg" | "xl";
+  align?: "start" | "center" | "end" | "stretch";
+  class?: string;
+  direction?: "vertical" | "horizontal"
+}
+
+const {
+  gap = "md",
+  align = "stretch",
+  class: className,
+} = Astro.props;
+
+const gaps = {
+  sm: "gap-2",
+  md: "gap-4",
+  lg: "gap-8",
+  xl: "gap-12",
+};
+
+const aligns = {
+  start: "items-start",
+  center: "items-center",
+  end: "items-end",
+  stretch: "items-stretch",
+};
+---
+
+<div
+  class:list={[
+    "flex flex-col",
+    gaps[gap],
+    aligns[align],
+    className,
+  ]}
+>
+  <slot />
+</div>

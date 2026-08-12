@@ -1,11 +1,98 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../components/layouts/Layout.astro';
+import DefaultLayout from "../layouts/DefaultLayout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+
+import Home from "../components/sections/Home.astro";
+
+import "../styles/global.css";
+import HeroCentered from "../components/blocks/Hero/HeroCentered.astro";
+import HeroBackground from "../components/blocks/Hero/HeroBackground.astro";
+
+import HeroSplit from "../components/blocks/Hero/HeroSplit.astro";
+import heroImage from "../assets/images/hero-saddle.jpg";
+
+import OurStory from "../components/sections/OurStory.astro";
+import storyImage from "../assets/images/workshop.jpg";
+
+import WhatWeDo from "../components/sections/WhatWeDo.astro";
+import equipmentImage from "../assets/images/equipment.jpg";
+import leatherImage from "../assets/images/leather-goods.jpg";
+import customImage from "../assets/images/custom.jpg";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<DefaultLayout
+  title="Talabartería Perez"
+  description="Artesaía ecuestre."
+>
+
+  <!-- <Header />
+
+  <Home />
+
+  <Footer /> -->
+<Header/>
+  <!-- <HeroCentered
+  badge="Artesanía ecuestre"
+  title="Monturas de cuero hechas a mano"
+  description="Creamos equipamiento ecuestre de alta calidad combinando tradición, diseño y materiales premium."
+  actionText="Ver catálogo"
+  actionHref="/catalogo"
+/> -->
+
+<!-- <HeroBackground
+ image={heroImage}  
+ badge="Artesanía ecuestre"
+  title="Monturas de cuero hechas a mano"
+  description="Creamos equipamiento ecuestre premium combinando tradición, diseño y materiales de alta calidad."
+  actionText="Ver catálogo"
+  actionHref="/productos"
+/> -->
+
+<HeroSplit
+  image={heroImage}
+
+  title="Artesanía en cuero hecha a mano."
+   description={`Nuestra tradición en la talabartería nos permite crear piezas de cuero pensadas para durar.
+
+Equipamiento ecuestre · Accesorios · Artículos de cuero · Piezas personalizadas`}
+  actionText="Nuestros productos"
+  actionHref="/productos"
+/>
+
+<OurStory
+  image={storyImage}
+/>
+
+<WhatWeDo
+  categories={[
+    {
+      title: "Equipamiento ecuestre",
+      description:
+        "Monturas, cabezadas y otros artículos elaborados para el trabajo y la vida a caballo.",
+      image: equipmentImage,
+      href: "#",
+      action: "Ver equipamiento",
+    },
+    {
+      title: "Artículos de cuero",
+      description:
+        "Piezas de cuero pensadas para acompañar la vida cotidiana con carácter y durabilidad.",
+      image: leatherImage,
+      href: "#",
+      action: "Ver artículos",
+    },
+    {
+      title: "Trabajos personalizados",
+      description:
+        "Piezas elaboradas según las necesidades y preferencias de cada cliente.",
+      image: customImage,
+      href: "#",
+      action: "Consultar",
+    },
+  ]}
+/>
+
+<Footer/>
+</DefaultLayout>

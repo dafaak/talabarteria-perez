@@ -1,13 +1,67 @@
-<div
-class="
-rounded-xl
-bg-white
-shadow-lg
-overflow-hidden
-transition
-hover:-translate-y-1
-hover:shadow-xl
-"
->
-    <slot />
-</div>
+---
+interface Props {
+  href?: string;
+
+  variant?: "default" | "outline" | "flat";
+
+  padding?: "sm" | "md" | "lg";
+
+  class?: string;
+}
+
+const {
+  href,
+  variant = "default",
+  padding = "md",
+  class: className,
+} = Astro.props;
+
+
+const variants = {
+  default:
+    "bg-[var(--surface)] shadow-[var(--shadow-card)]",
+
+  outline:
+    "border border-black/10",
+
+  flat:
+    "bg-[var(--surface)]",
+};
+
+
+const paddings = {
+  sm: "p-4",
+
+  md: "p-6",
+
+  lg: "p-8",
+};
+
+
+const classes = [
+  "rounded-[var(--radius)]",
+  variants[variant],
+  paddings[padding],
+  className,
+];
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class:list={[
+        ...classes,
+        "block transition hover:-translate-y-1"
+      ]}
+    >
+      <slot />
+    </a>
+  ) : (
+    <div
+      class:list={classes}
+    >
+      <slot />
+    </div>
+  )
+}

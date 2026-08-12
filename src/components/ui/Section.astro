@@ -1,11 +1,46 @@
 ---
 interface Props {
-    background?: string;
+  id?: string;
+
+  spacing?: "sm" | "md" | "lg" | "xl";
+
+  variant?: "default" | "surface" | "accent";
+
+  class?: string;
 }
 
-const { background = "" } = Astro.props;
+const {
+  id,
+  spacing = "lg",
+  variant = "default",
+  class: className,
+} = Astro.props;
+
+
+const spacings = {
+  sm: "py-8",
+  md: "py-12",
+  lg: "py-20",
+  xl: "py-32",
+};
+
+
+const variants = {
+  default: "bg-[var(--background)]",
+
+  surface: "bg-[var(--surface)]",
+
+  accent: "bg-[var(--accent)]",
+};
 ---
 
-<section class={`py-20 lg:py-32 ${background}`}>
-    <slot />
+<section
+  id={id}
+  class:list={[
+    spacings[spacing],
+    variants[variant],
+    className,
+  ]}
+>
+  <slot />
 </section>

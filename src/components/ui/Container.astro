@@ -1,3 +1,21 @@
-<div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-    <slot />
+---
+interface Props {
+  fluid?: boolean;
+  class?: string;
+}
+
+const {
+  fluid = false,
+  class: className,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    !fluid && "container",
+    fluid && "w-full",
+    className,
+  ]}
+>
+  <slot />
 </div>

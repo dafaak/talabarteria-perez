@@ -1,0 +1,79 @@
+---
+import Section from "../../ui/Section.astro";
+import Container from "../../ui/Container.astro";
+import Stack from "../../ui/Stack.astro";
+import Heading from "../../ui/Heading.astro";
+import Text from "../../ui/Text.astro";
+import Button from "../../ui/Button.astro";
+import Badge from "../../ui/Badge.astro";
+
+interface Props {
+  badge?: string;
+  title: string;
+  description?: string;
+  actionText?: string;
+  actionHref?: string;
+}
+
+const {
+  badge,
+  title,
+  description,
+  actionText,
+  actionHref = "#",
+} = Astro.props;
+---
+
+<Section spacing="xl">
+
+  <Container>
+
+    <Stack
+      gap="lg"
+      align="center"
+    >
+
+      {
+        badge && (
+          <Badge variant="accent">
+            {badge}
+          </Badge>
+        )
+      }
+
+
+      <Heading
+        level={1}
+        size="display"
+        align="center"
+      >
+        {title}
+      </Heading>
+
+
+      {
+        description && (
+          <Text
+            size="lg"
+            color="muted"
+            align="center"
+          >
+            {description}
+          </Text>
+        )
+      }
+
+
+      {
+        actionText && (
+          <Button href={actionHref}>
+            {actionText}
+          </Button>
+        )
+      }
+
+    </Stack>
+
+  </Container>
+
+</Section>

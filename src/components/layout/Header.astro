@@ -1,0 +1,69 @@
+---
+import Container from "../ui/Container.astro";
+import Button from "../ui/Button.astro";
+import { navigation } from "../../site/navigation";
+
+import logo from "../../assets/images/logo2-s.png";
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-black/10 bg-[var(--surface)]/90 backdrop-blur"
+>
+  <Container>
+
+    <div class="flex h-20 items-center justify-between">
+
+      <!-- Logo -->
+  
+      <a
+        href="/"
+        class="text-2xl font-bold tracking-wide text-[var(--foreground)]"
+      >
+          <img
+    src={logo.src}
+    alt="Talabartería Pérez"
+    width={logo.width}
+    height={logo.height}
+    class="h-40 w-40 object-contain"
+  />
+        
+      </a>
+  
+
+
+      <!-- Navigation -->
+      <nav class="hidden items-center gap-8 md:flex">
+
+        {
+          navigation.map((item) => (
+            <a
+              href={item.href}
+              class="
+                text-sm
+                font-medium
+                text-[var(--muted)]
+                transition
+                hover:text-[var(--primary)]
+              "
+            >
+              {item.label.es}
+            </a>
+          ))
+        }
+
+      </nav>
+
+
+      <!-- CTA -->
+      <Button
+        href="https://wa.me/593XXXXXXXXX"
+        class="rounded-lg"
+      >
+        WhatsApp
+      </Button>
+
+
+    </div>
+
+  </Container>
+</header>

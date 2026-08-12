@@ -1,0 +1,110 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+import Stack from "../ui/Stack.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  image: ImageMetadata;
+}
+
+const { image } = Astro.props;
+---
+
+<Section spacing="lg">
+
+  <Container>
+
+    <div class="grid items-center gap-16 lg:grid-cols-2">
+
+      <!-- Image -->
+
+      <div class="overflow-hidden rounded-2xl">
+        <img
+          src={image.src}
+          alt=""
+          width={image.width}
+          height={image.height}
+          class="aspect-[4/5] w-full object-cover"
+        />
+      </div>
+
+
+      <!-- Content -->
+
+     <Stack
+  gap="lg"
+  class="max-w-xl"
+>
+  <p
+    class="
+      text-sm
+      font-medium
+      uppercase
+      tracking-[0.2em]
+      text-[var(--color-accent)]
+    "
+  >
+    Nuestra historia
+  </p>
+
+  <Heading
+    level={2}
+    size="xl"
+  >
+    Una tradición que comenzó en 1989.
+  </Heading>
+
+  <Text
+    size="lg"
+    color="muted"
+  >
+    En 1989, en Machachi, abría sus puertas una pequeña
+    talabartería construida con esfuerzo, dedicación y la
+    determinación de comenzar un nuevo camino.
+  </Text>
+
+  <Text color="muted">
+    Los primeros años estuvieron marcados por el trabajo
+    artesanal. Sin siquiera una máquina de coser, cada pieza
+    se elaboraba completamente a mano. Poco a poco, la calidad
+    del trabajo y la confianza de los clientes permitieron que
+    el taller creciera y se abriera camino.
+  </Text>
+
+  <Text color="muted">
+    Con el crecimiento llegó también la primera máquina de
+    coser, una herramienta que permitió perfeccionar el trabajo,
+    asumir nuevos proyectos y continuar desarrollando el oficio.
+    Durante los años siguientes, la talabartería se consolidó
+    y se convirtió en parte de la vida de la comunidad.
+  </Text>
+
+  <Text color="muted">
+    Más de tres décadas después, el taller continúa en
+    Machachi, manteniendo vivo el oficio de trabajar el cuero.
+    Cada pieza conserva el compromiso con la calidad, la
+    durabilidad y el cuidado por los detalles que han acompañado
+    esta historia desde sus comienzos.
+  </Text>
+
+  <div class="border-t border-[var(--color-primary)]/20 pt-6">
+    <p class="font-serif text-3xl text-[var(--color-primary)]">
+      1989
+    </p>
+
+    <p class="mt-1 text-sm text-[var(--color-muted)]">
+      Machachi, Ecuador
+    </p>
+  </div>
+</Stack>
+
+    </div>
+
+    
+  </Container>
+
+</Section>

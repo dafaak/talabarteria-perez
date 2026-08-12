@@ -1,0 +1,129 @@
+---
+import Container from "../../ui/Container.astro";
+import Section from "../../ui/Section.astro";
+import Stack from "../../ui/Stack.astro";
+import Grid from "../../ui/Grid.astro";
+import Heading from "../../ui/Heading.astro";
+import Text from "../../ui/Text.astro";
+import Button from "../../ui/Button.astro";
+import Badge from "../../ui/Badge.astro";
+
+import type { ImageMetadata } from "astro";
+
+
+interface Props {
+  image: ImageMetadata;
+
+  badge?: string;
+
+  title: string;
+
+  description?: string;
+
+  actionText?: string;
+
+  actionHref?: string;
+}
+
+
+const {
+  image,
+  badge,
+  title,
+  description,
+  actionText,
+  actionHref = "#",
+} = Astro.props;
+---
+
+<Section spacing="lg">
+
+  <Container>
+
+    <Grid cols={2} gap="xl">
+
+      <!-- Content -->
+
+      <Stack
+        gap="lg"
+        class="max-w-2xl"
+      >
+
+        {
+          badge && (
+            <Badge class="w-fit" variant="accent">
+              {badge}
+            </Badge>
+          )
+        }
+
+
+        <Heading
+          level={1}
+          size="display"
+          class="max-w-[520px]"
+        >
+          {title}
+        </Heading>
+
+
+        {
+          description && (
+            <Text
+              size="lg"
+              color="muted"
+              class="max-w-xl whitespace-pre-line"
+            >
+              {description}
+            </Text>
+          )
+        }
+
+
+        {
+          actionText && (
+            <div class="flex flex-col items-center">
+            <Button class="w-fit rounded-xl" href={actionHref}>
+              {actionText}
+               <span aria-hidden="true">→</span>
+            </Button>
+            </div>
+          )
+        }
+
+
+      </Stack>
+
+
+      <!-- Image -->
+
+   <div
+  class="
+    group
+    overflow-hidden
+    rounded-2xl
+    shadow-[var(--shadow-card)]
+  "
+>
+  <img
+    src={image.src}
+    alt=""
+    width={image.width}
+    height={image.height}
+    class="
+      h-full
+      w-full
+      object-cover
+      transition-transform
+      duration-700
+      group-hover:scale-105
+    "
+  />
+</div>
+
+
+    </Grid>
+
+  </Container>
+
+</Section>

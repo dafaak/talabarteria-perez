@@ -1,0 +1,58 @@
+---
+import Container from "../ui/Container.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="
+    border-t
+    border-black/10
+    bg-[var(--foreground)]
+    py-12
+    text-white
+  "
+>
+
+  <Container>
+
+    <div class="flex flex-col gap-8">
+
+      <div>
+
+        <p class="text-lg font-semibold">
+          Talabartería Pérez
+        </p>
+
+
+        <p
+          class="
+            mt-3
+            max-w-lg
+            text-white/70
+          "
+        >
+          Sillas de montar y equipamiento para caballos hechos a mano con pasión y tradición.
+        </p>
+
+      </div>
+
+
+      <div
+        class="
+          border-t
+          border-white/20
+          pt-8
+          text-sm
+          text-white/50
+        "
+      >
+        © {year} Talabartería Pérez. Todos los derechos reservados.
+      </div>
+
+
+    </div>
+
+  </Container>
+
+</footer>

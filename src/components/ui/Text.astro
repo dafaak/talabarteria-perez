@@ -1,0 +1,65 @@
+---
+interface Props {
+  size?: "sm" | "md" | "lg" | "xl";
+
+  color?: "default" | "muted";
+
+  align?: "left" | "center" | "right";
+
+tone?: "default" | "light";
+
+  class?: string;
+}
+
+const {
+  size = "md",
+  color = "default",
+  align = "left",
+    tone = "default",
+  class: className,
+} = Astro.props;
+
+const tones = {
+  default: "",
+  light: "text-white",
+};
+
+const sizes = {
+  sm: "text-sm",
+
+  md: "text-base",
+
+  lg: "text-lg",
+
+  xl: "text-xl",
+};
+
+
+const colors = {
+  default: "text-[var(--foreground)]",
+
+  muted: "text-[var(--muted)]",
+};
+
+
+const alignments = {
+  left: "text-left",
+
+  center: "text-center",
+
+  right: "text-right",
+};
+---
+
+<p
+  class:list={[
+    "leading-relaxed",
+    sizes[size],
+    colors[color],
+    alignments[align],
+      tones[tone],
+    className,
+  ]}
+>
+  <slot />
+</p>

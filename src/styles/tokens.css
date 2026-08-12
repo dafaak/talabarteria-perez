@@ -1,0 +1,25 @@
+:root {
+  /* Brand */
+  --primary: #5a3a22;
+  --primary-dark: #3d2717;
+  --accent: #c59b63;
+
+  /* Surfaces */
+  --background: #faf7f2;
+  --surface: #ffffff;
+
+  /* Text */
+  --foreground: #2b221d;
+  --muted: #6d6257;
+
+  /* Radius */
+  --radius-sm: .5rem;
+  --radius-md: .75rem;
+  --radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0,0,0,.08);
+
+  /* Layout */
+  --container-max-width: 1280px;
+}
