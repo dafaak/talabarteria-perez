@@ -4,7 +4,7 @@ export const navigation = [
       es: "Inicio",
       en: "Home",
     },
-    href: "/",
+    href: "#home",
   },
 
   {

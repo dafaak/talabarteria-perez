@@ -1,0 +1,119 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+import Stack from "../ui/Stack.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+import Button from "../ui/Button.astro";
+
+interface Props {
+  phone?: string;
+  whatsapp?: string;
+  location?: string;
+}
+
+const {
+  phone = "",
+  whatsapp = "",
+  location = "Machachi, Ecuador",
+} = Astro.props;
+---
+
+<Section id="contact" spacing="xl" class="scroll-mt-24">
+  <Container>
+    <div
+      class="overflow-hidden rounded-[var(--radius)] bg-[var(--color-primary)] px-8 py-16 lg:px-16 lg:py-20"
+    >
+      <div class="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-end">
+        <!-- Main content -->
+
+        <Stack gap="lg">
+          <p
+            class="text-sm font-medium tracking-[0.2em] text-[var(--color-accent)] uppercase"
+          >
+            Contacto
+          </p>
+          <div></div>
+
+          <Heading level={2} size="xl" tone="light">
+            Hablemos sobre tu próximo trabajo en cuero.
+          </Heading>
+
+          <Text size="lg" class="max-w-xl opacity-90">
+            Cuéntanos qué necesitas. Ya sea equipamiento ecuestre, un artículo
+            de cuero o una pieza personalizada, estaremos encantados de
+            conversar contigo.
+          </Text>
+
+          {
+            whatsapp && (
+              <div class="flex flex-col items-center">
+                <Button
+                  href={whatsapp}
+                  variant="outline"
+                  class="rounded-xl border-white text-black hover:bg-white hover:text-[var(--color-primary)]"
+                >
+                  Hablar por WhatsApp
+                </Button>
+              </div>
+            )
+          }
+        </Stack>
+
+        <!-- Contact information -->
+
+        <div
+          class="border-t border-black/20 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10"
+        >
+          <Stack gap="md">
+            <div>
+              <p class="text-sm text-black/60">Ubicación</p>
+
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Talabarter%C3%ADa+P%C3%A9rez+Machachi+Ecuador"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-1 block text-black transition hover:text-[var(--color-accent)]"
+              >
+              <span class="inline-flex">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  class="h-5 w-5 shrink-0"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"
+                  ></path>
+                  <circle cx="12" cy="10" r="2.3"></circle>
+                </svg>
+                {location}
+                </span>
+              </a>
+            </div>
+
+            {
+              phone && (
+                <div>
+                  <p class="text-sm text-black/60">Teléfono</p>
+
+                  <a
+                    href={`tel:${phone}`}
+                    class="mt-1 block text-black transition hover:text-[var(--color-accent)]"
+                  >
+                    {phone}
+                  </a>
+                </div>
+              )
+            }
+          </Stack>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>
