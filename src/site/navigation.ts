@@ -14,7 +14,13 @@ export const navigation = [
     },
     href: "#about",
   },
-
+ {
+    label: {
+      es: "Lo que hacemos",
+      en: "What we do",
+    },
+    href: "#what-we-do",
+  },
   {
     label: {
       es: "Productos",
